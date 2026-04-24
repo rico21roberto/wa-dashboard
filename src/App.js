@@ -1,46 +1,76 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
+import Dashboard from "./pages/Dashboard";
+import DataPaspor from "./pages/DataPaspor";
+import Pengaduan from "./pages/Pengaduan";
+import Login from "./pages/login";
+import Sidebar from "./components/Sidebar";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [isLogin, setIsLogin] = useState(
+    localStorage.getItem("admin")
+  );
 
-  useEffect(() => {
-    axios.post("https://wa-gateway-backend-production.up.railway.app/api/ticket", {
-      phone: "08123456789",
-      message: "test dashboard"
-    })
-    .then(res => {
-      setData([
-        { name: "Total Ticket", value: 1 },
-        { name: "Success", value: res.data.success ? 1 : 0 }
-      ]);
-    });
-  }, []);
+  // 🔐 BELUM LOGIN
+  if (!isLogin) {
+    return <Login onLogin={() => setIsLogin(true)} />;
+  }
 
+  // ✅ SUDAH LOGIN
   return (
-    <div style={{ padding: 20, fontFamily: "Arial" }}>
-      <h1 style={{color:"#2c3e50"}}>📊 Dashboard WA Gateway
-      </h1>
-      <p style={{color: "green"}}>
-        Status API: online
-      </p>
-      <div style={{
-        background: "#f5f6fa",
-        padding: 20,
-        borderRadius: 10,
-        marginTop: 20
-      }}>
-      <h3>Statistik</h3>
-      <LineChart width={300} height={200} data={data}>
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Line type="monotone" dataKey="value" stroke="#00b894" />
-      </LineChart>
-    </div>
-    </div>
+    <BrowserRouter>
+      <div style={{ display: "flex", fontFamily: "Arial" }}>
+        
+        {/* SIDEBAR (GLOBAL) */}
+        <Sidebar />
+
+        {/* CONTENT */}
+        <div style={{ flex: 1, padding: "20px" }}>
+          
+          {/* HEADER GLOBAL */}
+          <div style={header}>
+            <h2>KANTOR IMIGRASI BELAWAN</h2>
+
+            <button
+              onClick={() => {
+                localStorage.removeItem("admin");
+                window.location.reload();
+              }}
+              style={logoutBtn}
+            >
+              Logout
+            </button>
+          </div>
+
+          {/* ROUTES */}
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/paspor" element={<DataPaspor />} />
+            <Route path="/pengaduan" element={<Pengaduan />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+/* ================= STYLE ================= */
+
+const header = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "20px",
+};
+
+const logoutBtn = {
+  background: "#ef4444",
+  color: "white",
+  border: "none",
+  padding: "8px 15px",
+  borderRadius: "5px",
+  cursor: "pointer",
+};
