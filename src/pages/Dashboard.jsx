@@ -12,7 +12,7 @@ import {
   const API = "HTTPS://wa-gateway-backend-production.up.railway.app";
 
   export default function Dashboard() {
-  const [qr, setQr] = useState(null);
+ // const [qr, setQr] = useState(null);
   const [status, setStatus] = useState(false);
   const [pengaduan, setPengaduan] = useState([]);
   const [totalPengaduan, setTotalPengaduan] = useState(0);
@@ -24,7 +24,7 @@ import {
       const res = await fetch(API + "/qr", { cache: "no-store" });
       const data = await res.json();
 
-      setQr(data.qr);
+     // setQr(data.qr);
       setStatus(data.status);
     } catch (err) {
       console.log("QR ERROR:", err);

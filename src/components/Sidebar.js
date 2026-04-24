@@ -65,7 +65,7 @@ export default function Sidebar() {
       {!status && qr && (
         <>
           <p style={{ color: "yellow" }}>Scan QR</p>
-          <img src={qr} width="100%" />
+          <img src={qr} width="100%" alt="QR Whatsapp"/>
         </>
       )}
 
