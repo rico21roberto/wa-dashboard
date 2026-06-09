@@ -9,10 +9,10 @@ import {
 } from "recharts";
 
 //const API = "http://localhost:3000";
-  const API = "HTTPS://wa-gateway-backend-production.up.railway.app";
+  const API = "http://72.60.79.201:3000";
 
   export default function Dashboard() {
- // const [qr, setQr] = useState(null);
+  //const [qr, setQr] = useState("");
   const [status, setStatus] = useState(false);
   const [pengaduan, setPengaduan] = useState([]);
   const [totalPengaduan, setTotalPengaduan] = useState(0);
@@ -25,7 +25,7 @@ import {
       const data = await res.json();
 
      // setQr(data.qr);
-      setStatus(data.status);
+      setStatus(data.connected);
     } catch (err) {
       console.log("QR ERROR:", err);
     }

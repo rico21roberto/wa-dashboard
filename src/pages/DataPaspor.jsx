@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 //const API = "http://localhost:3000";
-  const API = "HTTPS://wa-gateway-backend-production.up.railway.app";
+  const API = "http://72.60.79.201:3000";
 
 export default function DataPaspor() {
   const [data, setData] = useState([]);
@@ -37,11 +37,13 @@ export default function DataPaspor() {
     <div>
       <h1>Data Paspor</h1>
 
-      <input type="file" onChange={handleUpload} />
+      <button type="file" onChange={handleUpload}> 
+        Upload Excel
+      </button>
 
       <input
         type="text"
-        placeholder="Cari..."
+        placeholder="Cari data..."
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);

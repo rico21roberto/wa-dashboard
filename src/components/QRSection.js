@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 //const API = "http://localhost:3000";
-const API = "HTTPS://wa-gateway-backend-production.up.railway.app";
+const API = "http://72.60.79.201:3000";
 
 export default function QRSection() {
   const [qr, setQr] = useState(null);
   const [connected, setConnected] = useState(false);
 
   const loadQR = async () => {
-    const res = await fetch(API + "/qr");
+    const res = await fetch(API + "/qr"); 
     const data = await res.json();
 
     setQr(data.qr);

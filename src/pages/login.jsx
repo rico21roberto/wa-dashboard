@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //const API = "http://localhost:3000";
-const API = "HTTPS://wa-gateway-backend-production.up.railway.app";
+const API = "http://72.60.79.201:3000";
 
 export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
