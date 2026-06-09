@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./DataPaspor.css";
 //const API = "http://localhost:3000";
   const API = "http://72.60.79.201:3000";
 
@@ -37,9 +37,15 @@ export default function DataPaspor() {
     <div>
       <h1>Data Paspor</h1>
 
-      <button type="button" onChange={handleUpload}> 
-        Upload Excel
-      </button>
+    <label className="upload-btn">
+      Upload Excel
+      <input
+        type="file"
+        accept=".xlsx,.xls"
+        onChange={handleUpload}
+        hidden
+      />
+    </label>
 
       <input
         type="text"
