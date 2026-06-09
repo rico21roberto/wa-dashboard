@@ -37,7 +37,7 @@ export default function DataPaspor() {
     <div>
       <h1>Data Paspor</h1>
 
-      <button type="file" onChange={handleUpload}> 
+      <button type="button" onChange={handleUpload}> 
         Upload Excel
       </button>
 
