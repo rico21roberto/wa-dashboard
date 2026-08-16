@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./DataPaspor.css";
 //const API = "http://localhost:3000";
-  const API = "http://72.60.79.201:3000";
+  const API = "/api";
 
 export default function DataPaspor() {
   const [data, setData] = useState([]);

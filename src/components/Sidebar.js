@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 //const API = "http://localhost:3000";
-const API = "http://72.60.79.201:3000";
+const API = "/api";
 
 export default function Sidebar() {
   const location = useLocation();

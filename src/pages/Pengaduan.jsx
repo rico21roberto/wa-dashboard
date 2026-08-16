@@ -1,7 +1,7 @@
 
 
 
-const API = "http://72.60.79.201:3000";
+const API = "/api";
 
 export default function Pengaduan() {
   return (
